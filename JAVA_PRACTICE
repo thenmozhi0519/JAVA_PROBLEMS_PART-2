@@ -1,0 +1,634 @@
+//21.sliding window
+
+//maximum subarray of size k
+/*
+public class main{
+public static void main(String[] args){
+
+int k=3;
+int arr[]={2,3,4,5,2,2,7};
+int windowsum=0;
+for(int i=0;i<k;i++){
+windowsum+=arr[i];
+}
+int strt=0;
+int max=windowsum;
+for(int i=k;i<arr.length;i++){
+windowsum=windowsum-arr[i-k]+arr[i];
+if(windowsum>max){
+max=windowsum;
+strt=i-k+1;
+}
+}
+System.out.println(max);
+for(int i=strt;i<strt+k;i++){
+System.out.print(arr[i]+" ");
+}
+}
+}
+*/
+
+//-----------------------------------------------------------------------------------------
+//22.sort the array
+/*
+public class main{
+public static void main(String[] args){
+int[] arr={4,3,6,1,8,6};
+
+/*
+int temp=0;
+
+for(int i=0;i<arr.length;i++){
+for(int j=0;j<arr.length;j++){
+if(arr[i]<arr[j]){
+temp=arr[i];
+arr[i]=arr[j];
+arr[j]=temp;
+}
+}
+}
+
+for(int i=0;i<arr.length;i++){
+System.out.print(arr[i]+" ");
+}
+*/
+
+/* (or)  for desc_order (Arrays.sort(arr,Collections.reverseOrder());
+
+Arrays.sort(arr);
+for(int i=0;i<arr.length;i++){
+System.out.print(arr[i]+" ");
+}
+}
+}
+*/
+//-----------------------------------------------------------------------------------------
+
+//23.count vowels and consonants
+/*
+public class main{
+public static void main(String[] args){
+int vcount=0;
+int ccount=0;
+String str="Thenmozhi";
+str=str.toLowerCase();
+for(char c:str.toCharArray()){
+if(c=='a'||c=='e'||c=='i'||c=='o'||c=='u'){
+vcount++;
+}
+else{
+ccount++;
+}
+}
+System.out.println(vcount);
+System.out.println(ccount);
+}
+}
+*/
+//-----------------------------------------------------------------------------------------
+
+//24.sum of sequence
+/*
+public class main{
+
+public static int sumofseq(int i,int j,int k){
+int sum=0;
+for(i=i;i<=j;i++){
+if(i>=k && i!=j){
+sum+=2*i;
+}
+else{
+sum+=i;
+}
+}
+return sum;
+}
+public static void main(String[] args){
+Scanner sc=new Scanner(System.in);
+int i=sc.nextInt();
+int j=sc.nextInt();
+int k=sc.nextInt();
+System.out.println(sumofseq(i,j,k));
+}
+}
+
+*/
+//-----------------------------------------------------------------------------------------
+
+//25.Duplicate emails delete to make a unique email box
+/*
+public class main{
+public static void main(String[] args){
+
+int[] arr={1,3,3,4,5,5,5,6,6};
+
+HashSet<Integer> map=new HashSet<>();
+int count=0;
+for(int i:arr){
+if(map.contains(i)){
+count++;
+}
+map.add(i);
+}
+System.out.println(count);
+}
+}
+*/
+//-----------------------------------------------------------------------------------------
+
+//26.check password
+ /*
+public class main{
+public static void main(String[] args){
+
+Scanner sc=new Scanner(System.in);
+
+String pass=sc.nextLine();
+if(pass.length()<4 || pass.contains(" ") || (pass.charAt(0)>='0' && pass.charAt(0)<='9') || pass.contains("/")){
+System.out.println("0");
+return;
+}
+boolean upper=false;
+boolean lower=false;
+boolean digit=false;
+for(char c:pass.toCharArray()){
+if(c>='A'||c<='Z'){
+upper=true;
+}
+if(c>='a'||c<='z'){
+lower=true;
+}
+if(c>='0'||c<='9'){
+digit=true;
+}
+}
+if(upper&&lower&&digit){
+System.out.println("1");
+}
+else{
+System.out.println("0");
+}
+}
+}
+*/
+
+//-----------------------------------------------------------------------------------------
+//27. 1st repeating character
+/*
+public class Main{
+    public static void main(String[] args){
+        Scanner sc=new Scanner(System.in);
+        String str=sc.nextLine();
+        HashMap<Character,Integer> map=new HashMap<>();
+        for(char c:str.toCharArray()){
+            if(map.containsKey(c)){
+                map.put(c,map.get(c)+1);
+                  }
+else{
+
+            map.put(c,1);
+}
+        }
+       for(Map.Entry<Character,Integer> entry:map.entrySet()){
+            if(entry.getValue()>1){
+                System.out.println(entry.getKey());
+                break;
+            }
+            
+        }
+        
+        
+    }
+}
+*/
+//-----------------------------------------------------------------------------------------
+//28. data datatypes
+/*
+public class Main{
+
+public static void main(String[] args){
+
+double ke=45;
+//String ans=String.format("%.2f",ke); ---%d->int %f->float %c,%s-->char,String
+System.out.printf("%.3f",ke);
+
+}
+}
+*/
+//-----------------------------------------------------------------------------------------
+//29. carry count
+/*
+public class Main{
+public static void main(String[] args){
+Scanner sc=new Scanner(System.in);
+int num1=sc.nextInt();
+int num2=sc.nextInt();
+if(num1<0&&num2<0)
+return;
+int sum=0,count=0,carry=0;
+while(num1>0&&num2>0){
+sum=num1%10 + num2%10;
+
+if(sum>9){
+carry=sum/10;
+count++;
+}
+num1/=10;
+num2/=10;
+}
+System.out.println(count);
+}
+}
+*/
+//-----------------------------------------------------------------------------------------
+
+//30. repeat the sequence for ex: input=bb2aa3  -->output = bbbbbbaaaaaaaa
+/*
+public class Main{
+public static void main(String[] args){
+Scanner sc=new Scanner(System.in);
+String str=sc.nextLine();
+
+StringBuilder valuesb=new StringBuilder();
+StringBuilder tempsb=new StringBuilder();
+StringBuilder finalsb=new StringBuilder();
+
+for(int i=0;i<str.length();i++){
+if(Character.isDigit(str.charAt(i))){
+valuesb.append(str.charAt(i));
+}
+else{
+tempsb.append(str.charAt(i));
+}
+if (valuesb.length() > 0 && ((str.length() > i + 1 && !Character.isDigit(str.charAt(i + 1))) || i == str.length() - 1)) {
+int value=Integer.parseInt(valuesb.toString());
+String chv=tempsb.toString();
+while(value>1){
+tempsb.append(chv);
+value--;
+}
+valuesb.setLength(0);
+}
+if ((i + 1 < str.length() && Character.isDigit(str.charAt(i)) && !Character.isDigit(str.charAt(i + 1))) || (i == str.length() - 1  && Character.isDigit(str.charAt(i)))) {
+finalsb.append(tempsb);
+tempsb.setLength(0);
+}
+}
+System.out.println(finalsb.toString());
+}
+}
+*/
+//-----------------------------------------------------------------------------------------
+
+//31.reverse only numbers in the String
+/*
+public class main{
+public static void main(String[] args){
+Scanner sc=new Scanner(System.in);
+String s=sc.nextLine();
+StringBuilder numsb=new StringBuilder();
+for(int i=0;i<s.length();i++){
+if(Character.isDigit(s.charAt(i))){
+numsb.append(s.charAt(i));
+}
+else{
+System.out.print(s.charAt(i));
+}
+int rev=0,val=0;
+if(numsb.length()>0){
+val=Integer.parseInt(numsb.toString());
+}
+if(numsb.length()>0 && ( i==s.length()-1 || !Character.isDigit(s.charAt(i+1)))){
+while(val>0){
+int digit=val%10;
+rev=rev*10+digit;
+val/=10;
+}
+System.out.print(rev);
+
+numsb.setLength(0);
+}
+}
+}
+}
+
+import java.util.*;
+
+public class Main {
+    public static void main(String[] args) {
+
+        Scanner sc = new Scanner(System.in);
+        String s = sc.nextLine();
+
+        StringBuilder num = new StringBuilder();
+
+        for (int i = 0; i < s.length(); i++) {
+
+            char ch = s.charAt(i);
+
+            if (Character.isDigit(ch)) {
+                num.append(ch);
+
+                // End of number
+                if (i == s.length() - 1 || !Character.isDigit(s.charAt(i + 1))) {
+
+                    System.out.print(num.reverse());
+                    num.setLength(0);
+                }
+            } else {
+                System.out.print(ch);
+            }
+        }
+    }
+}
+*/
+//-----------------------------------------------------------------------------------------
+
+// 32.sort the string using last letter of each word
+/*
+public class main {
+    public static void main(String[] args) {
+
+        Scanner sc = new Scanner(System.in);
+        String s = sc.nextLine();
+
+        String[] str = s.split("\\s");
+
+        for(int i = 0; i < str.length - 1; i++) {
+            for(int j = i + 1; j < str.length; j++) {
+
+                char c1 = str[i].charAt(str[i].length() - 1);
+                char c2 = str[j].charAt(str[j].length() - 1);
+
+                // If first word ends with special character and second doesn't
+                if(!Character.isLetterOrDigit(c1) && Character.isLetterOrDigit(c2)) {
+                    String swap = str[i];
+                    str[i] = str[j];
+                    str[j] = swap;
+                }
+                // If both end with letters/digits, compare normally
+                else if(Character.isLetterOrDigit(c1) && Character.isLetterOrDigit(c2)) {
+
+                    if(c1 > c2) {
+                        String swap = str[i];
+                        str[i] = str[j];
+                        str[j] = swap;
+                    }
+                    else if(c1 == c2) {
+                        if(str[i].length() > 1 && str[j].length() > 1 &&
+                           str[i].charAt(str[i].length()-2) >
+                           str[j].charAt(str[j].length()-2)) {
+
+                            String swap = str[i];
+                            str[i] = str[j];
+                            str[j] = swap;
+                        }
+                    }
+                }
+            }
+        }
+
+        for(int i = 0; i < str.length; i++) {
+            System.out.print(str[i] + " ");
+        }
+    
+}
+}
+*/
+//-----------------------------------------------------------------------------------------
+
+// 33. print the longest word in a sentence if same length has more than one print which is be alphabetic order
+/*
+public class main{
+public static void main(String[] args){
+Scanner s=new Scanner(System.in);
+String str=s.nextLine();
+String[] splitstr=str.split("\\s");
+String l=splitstr[0];
+String[] arr=new String[10];
+int j=0;
+for(int i=1;i<splitstr.length-1;i++){
+if(l.length()<=splitstr[i+1].length()){
+l=splitstr[i+1];
+arr[j]=l;
+j++;
+
+}
+}
+Arrays.sort(arr,0,j);
+System.out.println(arr[0]);
+
+}
+}
+*/
+
+//-----------------------------------------------------------------------------------------
+
+//34. kth largest element in a array (in Bubble sort)
+/*
+public class main{
+public static void main(String[] args){
+Scanner sc=new Scanner(System.in);
+int arr[]={6,8,1,3,5};
+int k=sc.nextInt();
+for(int i=0;i<arr.length;i++){
+	for(int j=0;j<arr.length-i-1;j++){
+		if(arr[j]>arr[j+1]){
+			int swap=arr[j];
+			arr[j]=arr[j+1];
+			arr[j+1]=swap;
+		}
+	}
+}
+System.out.println(arr[arr.length-k]);
+}
+}
+*/
+//-----------------------------------------------------------------------------------------
+
+//35.insertion sort
+/*
+public class main{
+	public static void main(String[] args){
+		Scanner sc=new Scanner(System.in);
+		int[] arr={1,3,4,5,6};
+		int key=0;
+		for(int i=1;i<arr.length;i++){
+			key=arr[i];
+			int j=i-1;
+			while(j>=0&&arr[j]>key){
+				arr[j+1]=arr[j];
+				j--;
+			}
+			arr[j+1]=key;
+		}
+		for(int i=0;i<arr.length;i++){
+			System.out.print(arr[i]+" ");
+		}
+	}
+}*/
+//-----------------------------------------------------------------------------------------
+			
+//36.print 99 to 0 without loop (so use recursive) 
+/*
+public class main{
+	public static void print(int target){
+		if(target>=0){
+		System.out.println(target);
+		print(target-1);
+		}
+	}
+	public static void main(String[] args){
+		int target=99;
+		print(target);
+	}
+}
+*/
+//-----------------------------------------------------------------------------------------
+//37. subarray sum equals to k ..print the satisfy subarray count
+/*
+public class main{
+	public static void main(String[] args){
+		Scanner sc=new Scanner(System.in);
+		int n=sc.nextInt();
+		int[] arr=new int[n];
+		for(int i=0;i<n;i++){
+			arr[i]=sc.nextInt();
+		}
+		int k=sc.nextInt();
+		int count=0;
+		int sum=0;
+		/*for(int i=0;i<n;i++){           //brute force
+			int sum=0;
+			for(int j=i;j<n;j++){
+				sum+=arr[j];
+				if(sum==k)
+				count++;
+			}
+		}
+		//HashMap
+			 
+		HashMap<Integer,Integer> map=new HashMap<>();
+		map.put(0,1);
+		for(int i=0;i<n;i++){
+			sum=arr[i];
+			if(map.containsKey(sum-k)){
+				count+=map.get(sum-k)+1;
+			}
+			else{
+				map.put(sum,1);
+			}
+		}
+		System.out.println(count);
+	}
+}
+*/
+//-----------------------------------------------------------------------------------------
+// 38. Postfix to infix
+/*
+public class main{
+	public static void main(String[] args){
+		Scanner sc=new Scanner(System.in);
+		String s=sc.nextLine();
+		Stack<String> stack=new Stack<>();
+		for(int i=0;i<s.length();i++){
+			char c=s.charAt(i);
+			if(Character.isLetter(c)){
+				stack.push(String.valueOf(c));
+			}
+			else{
+				String op2=stack.pop();
+				String op1=stack.pop();
+				String res="("+op1+c+op2+")";
+				stack.push(res);
+			}
+		}
+		System.out.print(stack.pop());
+	}
+}
+*/
+//-----------------------------------------------------------------------------------------
+// 39.valid parenthesis (u can use stack approach also)
+/*
+public class main{
+	public static void main(String[] args){
+		Scanner sc=new Scanner(System.in);
+		String str=sc.nextLine();
+		
+			if(str.contains("{}")){
+				str=str.replace("{}","");
+			}
+			if(str.contains("()")){
+				str=str.replace("()","");
+		}
+		if(str.contains("[]")){
+			str=str.replace("[]","");
+		
+		}
+		if(str.isEmpty()){
+			System.out.println("true");
+		}
+		else{
+			System.out.println("false");
+		}
+	}
+}
+*/
+//-----------------------------------------------------------------------------------------
+/* 40. reverse polish notation (leetocde 150)
+input=["2","3","+","3","*"] -> String tokens
+output = 18
+*/
+
+//41. infix to postfix
+/*
+public class main{
+	public static int precedance(char c){
+		if(c=='+'||c=='-'){
+			return 1;
+		}
+		if(c=='*'||c=='/'){
+			return 2;
+		}
+		if(c=='^'){
+			return 3;
+		}
+		return -1;
+	}
+	public static void main(String[] args){
+		Scanner sc=new Scanner(System.in);
+		String s=sc.nextLine();
+		Stack<Character> stack=new Stack<>();
+		StringBuffer sb=new StringBuffer();
+		for(char c:s.toCharArray()){
+			if(Character.isLetter(c)){
+				sb.append(c);
+			}
+		
+			else if(c=='('){
+					stack.push(c);
+					}
+			else if(')'==c){
+				while(stack.peek()!='('){
+					sb.append(stack.pop());
+				}
+				stack.pop();
+				}
+			else{
+				while(!stack.empty()&& stack.peek()!='(' && precedance(stack.peek())>=precedance(c)){
+					sb.append(stack.pop());
+				}
+				stack.push(c);
+				
+				}
+		}
+		while(!stack.empty()){
+			sb.append(stack.pop());
+		}
+	
+	System.out.println(sb);
+	}
+	
+}
+	*/			
+//-----------------------------------------------------------------------------------------
