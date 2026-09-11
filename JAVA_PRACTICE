@@ -632,3 +632,34 @@ public class main{
 }
 	*/			
 //-----------------------------------------------------------------------------------------
+
+42 . longest consecutive sequence 
+/*
+public class main{
+	public static void main(String[] args){
+		Scanner sc=new Scanner(System.in);
+		int n=sc.nextInt();
+		int[] a=new int[n];
+		HashSet<Integer> set=new HashSet<>();
+		for(int i=0;i<n;i++){
+			a[i]=sc.nextInt();
+			set.add(a[i]);
+		}
+		int strt=0,max=0;;
+		int streak=0;
+		for(int i:a){
+			if(!set.contains(i-1)){
+				strt=i;
+				streak=1;
+			}
+			while(set.contains(strt+1)){
+				strt++;
+				streak++;
+			}
+			max=Math.max(max,streak);
+		}
+		System.out.print(max);
+	}
+}
+*/
+//-----------------------------------------------------------------------------------------
